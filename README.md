@@ -1,5 +1,5 @@
 # Pool
-Coroutine Pool  
+Coroutine pool  
 # Quick start
 ```
     p := NewPool(4)  

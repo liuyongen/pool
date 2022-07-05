@@ -8,7 +8,7 @@ import (
 )
 
 type Info struct {
-	Param string
+	Params string
 	Func  func(string)
 }
 
@@ -45,7 +45,7 @@ func (p *Pool) Work(workId int) {
 	for {
 		select {
 		case job := <-p.tasks.info:
-			params := fmt.Sprintf("url:%s workid:%d", job.Param, workId)
+			params := fmt.Sprintf("param:%s workid:%d", job.Params, workId)
 			job.Func(params) //执行传入的函数
 		}
 	}
@@ -61,7 +61,7 @@ func main() {
 	go p.Run()
 	go http.ListenAndServe("0.0.0.0:6060", nil)
 	for {
-		p.Put(Info{Param: "http://www.boyaa.com", Func: Proc})
+		p.Put(Info{Params: "http://www.boyaa.com", Func: Proc})
 		time.Sleep(time.Millisecond * 500)
 	}
 }
