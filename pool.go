@@ -8,8 +8,8 @@ import (
 )
 
 type Info struct {
-	Params string
-	Func  func(string)
+	Params interface{}
+	Func   func(interface{})
 }
 
 type Task struct {
@@ -51,8 +51,8 @@ func (p *Pool) Work(workId int) {
 	}
 }
 
-func Proc(str string) {
-	fmt.Println("Result:", str)
+func Proc(params interface{}) {
+	fmt.Println("Result:", params)
 }
 
 func main() {
