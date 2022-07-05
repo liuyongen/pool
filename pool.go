@@ -59,7 +59,7 @@ func main() {
 
 	p := NewPool(4)
 	go p.Run()
-	go http.ListenAndServe("0.0.0.0:6060", nil)
+	go http.ListenAndServe("0.0.0.0:6060", nil) //查看协程使用
 	for {
 		p.Put(Info{Params: "http://www.boyaa.com", Func: Proc})
 		time.Sleep(time.Millisecond * 500)
